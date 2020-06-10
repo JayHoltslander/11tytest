@@ -1,0 +1,105 @@
+* {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.btn.brand-color {
+  background-color: #2b85b3;
+  color: #fff;
+}
+
+body {
+  background-color: #eee;
+  font-family: roboto;
+}
+
+.collection.collapsible .collapsible-header {
+  display: block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  padding: 0px;
+  background-color: transparent;
+  border-bottom: none;
+}
+.collection.collapsible .collapsible-body {
+  display: none;
+  border-bottom: 0;
+  box-sizing: border-box;
+  padding: 0;
+  color: #000000;
+}
+.collection .collection-item {
+  background-color: transparent;
+  min-height: 118px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+.collection .collection-item.active {
+  background-color: initial;
+  color: #000;
+}
+.collection .collection-item.active .digit {
+  background-color: rgba(255, 165, 2, 0.85) !important;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.collection .collection-item.poster {
+  padding-left: 132px;
+  position: relative;
+}
+.collection .collection-item.poster .title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+}
+.collection .collection-item.poster p {
+  margin-top: 0;
+  color: rgba(128, 128, 128, 0.7);
+}
+.collection .collection-item.poster p strong {
+  font-size: 1.2rem;
+}
+.collection .collection-item.poster .digit {
+  position: absolute;
+  left: 1rem;
+  font-weight: bold;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  -webkit-text-orientation: sideways;
+          text-orientation: sideways;
+  text-align: right;
+  font-size: 2rem;
+  line-height: 1.5rem;
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 6px 6px;
+  height: calc(100% - 20px);
+  border-radius: 3px;
+  color: #fff;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+.collection .collection-item.poster .digit span {
+  position: relative;
+  left: 5px;
+  top: -3px;
+  font-weight: 100;
+  font-size: 1.25rem;
+  line-height: 0;
+  margin: 0 0 1px 0;
+}
+.collection .collection-item.poster img {
+  position: absolute;
+  width: 64px;
+  overflow: hidden;
+  left: 4rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.collection .collection-item.poster .secondary-content {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}

@@ -1,13 +1,16 @@
 <!-- ORIGINAL DATA SOURCE: -->
 <!-- https://v2-api.sheety.co/fc583ad9266228c03ecc1ee9ace31835/starWarsChronologicalOrder/sheet1 -->
-<!-- Above json file was also saved locally and stored in /_data as local-data.json -->
 
-<!-- ^ The local file is no longer needed as i've now enabled data fetching from the external file -->
+
 
 <!DOCTYPE html>
 <html>
   <head>
     <title>API</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&amp;display=swap">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style type="text/css">
       table {
         margin: 0 auto;
@@ -32,42 +35,49 @@
     </style>
   </head>
   <body>
-    <table>
-      <thead>
-        <tr>
-          <th>Number</th>
-          <th>Image</th>
-          <th>Episode</th>
-          <th>Title</th>
-          <th>Episode Name</th>
-          <th>Official Page</th>
-          <th>Disney+ Link</th>
-        </tr>
-      </thead>
-      <tbody>
-		  {{ samplegithub | log }}
-		  {{ externaldata.sheet1  | log }}
-        {% for item in externaldata.sheet1 %}
-        <tr>
-          <td>{{ item.number }}</td>
-          <td><img src="{{ item.image }}" width="50px" height="50px"></td>
-          <td>{{ item.episode }}</td>
-          <td>{{ item.title }}</td>
-          <td>{{ item.episodeName }}</td>
-          <td><a href="{{ item.officialPage }}">Official page</a></td>
-          <td><a href="{{ item.disneyplusLink }}">Stream it</a></td>
-        </tr>
-        {% else %}
-        <tr>
-          <td colspan="7">Nothing was found</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
 
-    <hr />
-    <p>The below bit is using the example provided which fetches Github Stars. (_data/sample-github.js)</p>
-    <p></p>
-    <h3>11ty has {{ samplegithub.stargazers_count }} stars on Github</h3>
+  <ul class="collection collapsible">
+      {{ samplegithub | log }}
+      {{ externaldata.sheet1  | log }}
+
+    {% for item in externaldata.sheet1 %}
+    <li class="collection-item poster">
+      <div class="collapsible-header">
+        <div class="digit"><span>#</span>{{ item.number }}</div>
+        <img src="{{ item.image }}" alt="Poster">
+        <span class="title">{{ item.episodeName }}</span>
+        <p>
+          {{ item.title }}s<br>
+          <strong>{{ item.episode }}</strong>
+        </p>
+      </div>
+      <div class="collapsible-body">
+        <div class="row">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum doloribus dolores consequuntur fugiat sint sunt unde voluptate ut eos, omnis excepturi expedita et officia hic molestias minus odit totam sed.
+        </div>
+        <div class="row">
+          <a class="waves-effect btn-flat" href="{{ item.officialPage }}" target="_blank"><i class="material-icons left">info_outline</i>Episode Guide</a>
+          <a class="waves-effect btn-flat" href="{{ item.officialPage }}" target="_blank"><i class="material-icons left">info</i>IMDB</a>
+          <a class="waves-effect btn-flat" href="{{ item.officialPage }}" target="_blank"><i class="material-icons left">book</i>Wookieepedia</a>
+          <a class="waves-effect btn-flat" href="{{ item.disneyplusLink }}" target="_blank"><i class="material-icons left">cast</i>Stream on Disney+</a>
+        </div>
+      </div>
+    </li>
+    {% else %}
+    Nope
+    {% endfor %}
+
+  </ul>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.collapsible').collapsible();
+  });
+</script>
+
   </body>
 </html>
